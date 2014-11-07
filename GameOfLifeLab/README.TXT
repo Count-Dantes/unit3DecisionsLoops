@@ -88,4 +88,8 @@ Submission:
 *       10X10 box
 *       The live cells are pictures of Andrew
 *       The dead cells are pictures of Arpan
+*       starts off with a glidermoving down and right, a glider in the middle, and a glider in the
+*       bottem
+*       The sides of the grid will be warping
+*       It runs forever
 *       
