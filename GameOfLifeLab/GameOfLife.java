@@ -98,7 +98,7 @@ public class GameOfLife
         GameOfLife game = new GameOfLife();
         final int ROWS = game.getNumRows();
         final int COLS = game.getNumCols();
-
+ 
         for(int row = 0; row < ROWS; row++)
         {
             for(int col = 0; col < COLS; col++)
@@ -113,6 +113,15 @@ public class GameOfLife
                         neighbors +=1;
                     }
                 }
+                if ( (neighbors > 3) )
+                {
+                    cell.setDead;
+                }
+                else if ( (neigbors < 2) )
+                {
+                    cell.setDead;
+                }
+                
             }
         }
         if ( (neighbors = 3)
