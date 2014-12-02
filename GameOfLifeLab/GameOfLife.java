@@ -4,6 +4,7 @@ import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
+import java.lang.Thread;
 
 /**
  * Game of Life starter code. Demonstrates how to create and populate the game using the GridWorld framework.
@@ -14,14 +15,13 @@ import info.gridworld.grid.Location;
  */
 public class GameOfLife
 {
+    
     // the world comprised of the grid that displays the graphics for the game
     private ActorWorld world;
     
     // the game board will have 5 rows and 5 columns
     private final int ROWS = 10;
     private final int COLS = 10;
-    
-    
     /**
      * Default constructor for objects of class GameOfLife
      * 
@@ -41,6 +41,11 @@ public class GameOfLife
         
         // display the newly constructed and populated world
         world.show();
+        for (int i = 0; i < 10; i ++)
+        {
+            this.createNextGeneration();
+            world.show();
+        }
         
     }
     
@@ -59,26 +64,27 @@ public class GameOfLife
         
         // create and add rocks (a type of Actor) to the three intial locations
         Rock rock1 = new Rock();
-        Location loc1 = new Location(2, 9);
+        Rock rock2 = new Rock();
+        Rock rock3 = new Rock();
+        Rock rock4 = new Rock();
+        Rock rock5 = new Rock();
+        Location loc1 = new Location(0, 0);
+        Location loc2 = new Location(1, 1);
+        Location loc3 = new Location(1, 2);
+        Location loc4 = new Location(2, 0);
+        Location loc5 = new Location(2, 1);
         grid.put(loc1, rock1);
-        
+        grid.put(loc2, rock2);
+        grid.put(loc3, rock3);
+        grid.put(loc4, rock4);
+        grid.put(loc4, rock5); 
         /*Rock rock2 = new Rock();
         Location loc2 = new Location(3, 10);
         grid.put(loc2, rock2);
         */
-        Rock rock3 = new Rock();
-        Location loc3 = new Location(4, 8);
-        grid.put(loc3, rock3);
-        
-        Rock rock4 = new Rock();
-        Location loc4 = new Location(4, 9);
-        grid.put(loc4, rock4);
-        
-        /*Rock rock5 = new Rock();
-        Location loc5 = new Location(4, 10);
-        grid.put(loc5, rock5);*/
     }
 
+    
     /**
      * Generates the next generation based on the rules of the Game of Life and updates the grid
      * associated with the world
@@ -98,37 +104,52 @@ public class GameOfLife
         GameOfLife game = new GameOfLife();
         final int ROWS = game.getNumRows();
         final int COLS = game.getNumCols();
+        BoundedGrid<Actor> gridNext = new BoundedGrid<Actor>(ROWS, COLS);
  
         for(int row = 0; row < ROWS; row++)
         {
             for(int col = 0; col < COLS; col++)
             {
-                Actor cell = game.getActor(row, col);
-                List neighborsArray = cell.getNeighbors;
+                Rock rock = new Rock();
+                Location cell = new Location(row, col);
                 int neighbors = 0;
-                for (String var : neighborsArray)
+                //ArrayList<E> surroundings = grid.getNeighbors(cell);
+                for (Location occupiedNeighbor : grid.getOccupiedAdjacentLocations(cell) )
                 {
-                    if (var)
+                    neighbors +=1;
+                }
+                if(neighbors<2)
+                {
+                    //no object is placed on the new grid
+                }
+                else if (grid.get(cell)!= rock)
+                {
+                    if( neighbors <4)
                     {
-                        neighbors +=1;
+                        gridNext.put(cell, rock);
+                    }
+                    else
+                    {
+                        //also a dead state
                     }
                 }
-                if ( (neighbors > 3) )
+                else
                 {
-                    cell.setDead;
+                    if (neighbors == 3)
+                    {
+                        gridNext.put(cell, rock);
+                    }
+                    else
+                    {
+                        //dead state
+                    }
                 }
-                else if ( (neigbors < 2) )
-                {
-                    cell.setDead;
-                }
-                
+            
             }
         }
-        if ( (neighbors = 3)
-        {
-            cell.setAlive
-        }
+        grid = gridNext;
     }
+    
     
     /**
      * Returns the actor at the specified row and column. Intended to be used for unit testing.
@@ -138,6 +159,7 @@ public class GameOfLife
      * @pre     the grid has been created
      * @return  the actor at the specified row and column
      */
+    
     public Actor getActor(int row, int col)
     {
         Location loc = new Location(row, col);
@@ -173,6 +195,7 @@ public class GameOfLife
     public static void main(String[] args)
     {
         GameOfLife game = new GameOfLife();
+        
     }
-
 }
+

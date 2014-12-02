@@ -85,11 +85,16 @@ Submission:
 * 
 * 
 *Personal Requiements document:
-*       10X10 box
-*       The live cells are pictures of Andrew
-*       The dead cells are pictures of Arpan
-*       starts off with a glidermoving down and right, a glider in the middle, and a glider in the
-*       bottem
-*       The sides of the grid will be warping
-*       It runs forever
+*       10X10 box.
+*       I planned on having a glider start off in the top left hand corner, and move to the 
+*       bottem right.
+*       I still don't know why pictures of rocks appear instead of Arpan, because I deleted the 
+*       image file of the rock itself from my repository
 *       
+*       
+*       
+*Personal Reflection:
+*       I really wish that I had devoted the time to the lab and had gotten the output to work
+*       correctly. I found writing out a flowchart to be very helpfull in planning out the underlying
+*       logic of the lab. My advice for next years students would be to not be a senior while doing 
+*       the lab.
